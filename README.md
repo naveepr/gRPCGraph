@@ -8,9 +8,11 @@
     > cd cpp/graph_service
    -  Using cmake build the binary 
     > mkdir -p cmake/build  
-    > pushd cmake/build  
+    > pushd cmake/build 
     > cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..  
-    > make -j
-    
+    > make -j 
+    > Files are generated in the cmake/build folder
  - Run server in terminal 
-  > 
+  > ./graph_server 
+  
+ - Run client in different terminals
