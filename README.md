@@ -41,7 +41,7 @@ Client: delete_graph for id: 1 Success
 Client: shortest_path from 0 to 3 is: 6 
 Client: delete_graph for id: 2 Success 
 
-   > ./graph_client ../../../../inputFiles/file2.txt 
+   > ./graph_client ../../../../inputFiles/file2.txt  
 6 
 0 1  2 
 1 2  4 
