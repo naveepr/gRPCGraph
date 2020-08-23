@@ -14,10 +14,6 @@
 using namespace std;
 using namespace grpc;
 
-// data structure to store graph edges
-struct GraphEdge {
-	int src, dest, dist;
-};
 
 typedef pair<int, int> Pair;
 // class to represent a graph object
@@ -54,7 +50,7 @@ public:
         vector<int> dist(graph_sz, INT_MAX);
 
         // Create a PQ.
-        priority_queue<pair<int, int>, vector< pair<int, int> >, greater<pair<int, int> > > pq;
+        priority_queue<Pair, vector< Pair >, greater<Pair > > pq;
 
         // Add source to pq, where distance is 0.
         pq.push(make_pair(start, 0));
