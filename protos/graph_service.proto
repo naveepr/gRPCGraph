@@ -1,0 +1,42 @@
+syntax = "proto3";
+ 
+message DeleteInput {
+    int64 id=1;
+}
+
+message DeleteOutput {
+    bool result=1;
+}
+message ShortestPathInput {
+    uint32 start=1;
+    uint32 end=2;
+    int64 id=3;
+}
+
+message ShortestPathOutput {
+     int32 distance = 1;
+}
+
+message Edge
+{
+	 uint32 start = 1;
+     uint32 end = 2;
+     uint32 dist =3; 
+}
+ 
+message PostInput {
+     uint32 num_edges = 1;
+     repeated Edge edge =2;
+}
+
+message PostOutput {
+     int64 id = 1;
+}
+
+service GraphService
+{
+	rpc postGraph(PostInput) returns (PostOutput) {}
+    rpc shortestPath(ShortestPathInput) returns (ShortestPathOutput) {}
+    rpc deleteGraph(DeleteInput) returns (DeleteOutput) {}
+}
+
