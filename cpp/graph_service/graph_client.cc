@@ -139,7 +139,7 @@ bool readFile(ifstream &infile, GraphClient &client, queue<int64_t> &q) {
         if (!res) {
             return false;
         }
-        cout<<"Client: post_graph Success id- "<<id<<endl;
+        cout<<"Client: post_graph Success id: "<<id<<endl;
         q.push(id);
     }
 
@@ -171,13 +171,13 @@ int main(int argc, char *argv[])
         if (shortedPath ==-1) {
             return -1;
         }
-        cout<<"Client: shortest_path from"<< src <<"to"<<dest<<"is:"<<shortedPath<<endl;
+        cout<<"Client: shortest_path from "<< src <<" to "<<dest<<" is: "<<shortedPath<<endl;
 
         res = client.delete_graph(id);
         if (!res) {
             return -1;
         }
-        cout<<"Client: delete_graph for id- "<<id<<"Success"<<endl;
+        cout<<"Client: delete_graph for id: "<<id<<" Success"<<endl;
         q.pop();
     }
 
