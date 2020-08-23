@@ -115,6 +115,7 @@ private:
 	unique_ptr<GraphService::Stub> stub;
 };
 
+/* read from the input file and post graph, the id returned is saved in a queue */
 bool readFile(ifstream &infile, GraphClient &client, queue<int64_t> &q) {
     string line;
     int N, start, end, dist,i, count;
@@ -164,7 +165,10 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    // Deque from q and calculate shortest path and delete the graph
+    /* 1. Deque from q
+       2. calculate shortest path 
+       3. delete the graph
+    */
     while(!q.empty()) {
         id = q.front();
         shortedPath = client.shortest_path(src, dest, id);

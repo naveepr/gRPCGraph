@@ -92,7 +92,6 @@ public:
     }
 };
 
-
 class GraphServiceImpl final : public GraphService::Service
 {
 public:
@@ -108,7 +107,7 @@ public:
         Graph *graph = new Graph(vecEdges, num_edges);
 
         /* Acquire lock for critical section
-            Ideally would only need a hash bucket lock if implementing own hashtable rather than STL map
+           Ideally would only need a hash bucket lock if implementing own hashtable rather than using STL map
         */
         std::unique_lock<std::mutex> lock(mu);
         // increment the graphId if it is already taken
@@ -165,8 +164,8 @@ public:
     }
 
 private:
-    static int64_t graphId;
-    std::mutex mu;
+    static int64_t graphId;  //rotating ID that will be generated
+    std::mutex mu;  // to prevent critical section errors
     unordered_map<int, Graph*> hashMap;
 };
 
@@ -189,5 +188,4 @@ int main(int argc, char *argv[])
 {
     RunServer();
     return 1;
-
 }
