@@ -19,7 +19,7 @@ message ShortestPathOutput {
 
 message Edge
 {
-	 uint32 start = 1;
+     uint32 start = 1;
      uint32 end = 2;
      uint32 dist =3; 
 }
@@ -35,7 +35,7 @@ message PostOutput {
 
 service GraphService
 {
-	rpc postGraph(PostInput) returns (PostOutput) {}
+    rpc postGraph(PostInput) returns (PostOutput) {}
     rpc shortestPath(ShortestPathInput) returns (ShortestPathOutput) {}
     rpc deleteGraph(DeleteInput) returns (DeleteOutput) {}
 }
