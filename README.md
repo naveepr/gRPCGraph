@@ -68,4 +68,10 @@ Client: delete_graph for id: 4 Success
 - Inputfile  
 > It contains the graph as well as the number of edges in the graph. Also it contains the source and destination for which the shortest path needs to be calculated.
  
-   
+## Design 
+ - The post operation is done by reading from the file having the graph input. The gRPC client then calls the server API post_graph. The Server then creats the graph and a unique ID is generated. The unique ID generated is a round robin one and it is given back to the client. Each client keeps note of its id in a queue.
+The server keeps a hashMap to save the id versus graph mapping. 
+ - The shortest path calculation from source to destination is done using Djikstra algorithm. It returns the shortest path given the ID, src and destination. 
+ - Delete graph is done on the ID. The client sends the delete to the server which then releases the memory for the graph given ID. 
+ - A lock is added to protect from the critical section when the ID is generated and many POST graph can happen from multiple clients. This can be enhanced further by allocating each client a fixed chunk of indexes and then locking wont be necessary.
+ - Assumption is that each client will operate only on its own ID's. 
